@@ -1,6 +1,6 @@
 from django.db import models
-
-from apps.url_management.functions import generate_shortcode
+from django.conf import settings
+from django.utils.crypto import get_random_string
 
 
 class Shortener(models.Model):
@@ -19,7 +19,7 @@ class Shortener(models.Model):
 
     @classmethod
     def create_shortened_url(cls):
-        code = generate_shortcode()
+        code = get_random_string(int(settings.SHORTENER_BLOCK_SIZE))
         if cls.objects.filter(shortcode=code).exists():
             return cls.create_shortened_url()
         return code
