@@ -9,4 +9,4 @@ class ShortenerAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at',)
     list_display = ('url', 'shortcode', 'created_at',)
     list_filter = ('created_at',)
-    search_fields = ('url', 'short_code')
+    search_fields = ('url', 'shortcode')
