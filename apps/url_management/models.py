@@ -4,8 +4,8 @@ from django.db import models
 
 
 class Shortener(models.Model):
-    url = models.URLField(unique=True)
-    shortcode = models.URLField(unique=True)
+    url = models.URLField()
+    shortcode = models.URLField(unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
