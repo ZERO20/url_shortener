@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m+omig-*7ik0j9b(39nhidrxnb6(5c8h6q@q=h2)a)$e_)ivl0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 BASE_APPS = [
     'django.contrib.admin',
@@ -131,3 +131,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+SHORTENER_BLOCK_SIZE = os.getenv('SHORTENER_BLOCK_SIZE', 6)
