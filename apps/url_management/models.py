@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+from apps.url_management.functions import generate_shortcode
 
 
 class Shortener(models.Model):
@@ -16,3 +16,15 @@ class Shortener(models.Model):
 
     def __str__(self):
         return f'{self.url} to {self.shortcode}'
+
+    @classmethod
+    def create_shortened_url(cls):
+        code = generate_shortcode()
+        if cls.objects.filter(shortcode=code).exists():
+            return cls.create_shortened_url()
+        return code
+
+    def save(self, *args, **kwargs):
+        if not self.shortcode:
+            self.shortcode = self.create_shortened_url()
+        super().save(*args, **kwargs)
