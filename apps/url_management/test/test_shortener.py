@@ -18,4 +18,7 @@ class ShortenerTests(TestCase):
     def test_shortcode_size(self):
         self.assertEqual(len(self.shortener.shortcode), SIZE)
 
-    def
+    def test_shortcode_exists(self):
+        new_shortcode = Shortener.create_shortened_url()
+        shorcode_exists = Shortener.objects.filter(shortcode=new_shortcode).exists()
+        self.assertIs(shorcode_exists, False)
