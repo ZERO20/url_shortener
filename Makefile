@@ -21,3 +21,9 @@ shell-plus:
 
 createsuperuser:
 	docker-compose -f docker-compose.yml exec app bash -c "./manage.py createsuperuser"
+
+coverage-run:
+	docker-compose -f docker-compose.yml exec app bash -c "coverage run --source='.' manage.py test apps.url_management"
+
+coverage-report:
+	docker-compose -f docker-compose.yml exec app bash -c "coverage report --omit='*migrations*' --skip-covered "
