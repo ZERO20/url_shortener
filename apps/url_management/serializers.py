@@ -8,6 +8,9 @@ class UrlShortenerSerializer(serializers.Serializer):
     shortcode = serializers.SerializerMethodField(read_only=True)
 
     def get_shortcode(self, obj):
+        """
+        Forms the url with the generated shortcode
+        """
         scheme_host = self.context['request']._current_scheme_host
         return f'{scheme_host}/{obj.shortcode}'
 

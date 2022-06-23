@@ -12,6 +12,7 @@ class AccountTests(APITestCase):
     """Test endpoints"""
 
     def test_generate_shortcode(self):
+        """Test that the `/generate/short/url/` endpoint is responding correctly with the generated short url"""
         generate_url = reverse('generate-short-url')
         data = {'url': URL}
         response = self.client.post(generate_url, data, format='json')
@@ -23,9 +24,11 @@ class AccountTests(APITestCase):
 
     @staticmethod
     def setup_shortener():
+        """Creates a record in Shortener"""
         return Shortener.objects.create(url=URL)
 
     def test_decode_shortcode(self):
+        """Test that the `/decode/short/url/<str:shortcode>/` endpoint is responding correctly with the url original"""
         shortener = self.setup_shortener()
         shortcode = shortener.shortcode
         decode_url = reverse('decode-short-url', kwargs={'shortcode': shortcode})
@@ -36,6 +39,7 @@ class AccountTests(APITestCase):
         self.assertEqual(response_json.get('url'), shortener.url)
 
     def test_redirect_shortcode(self):
+        """Test that the `/<str:shortcode>` endpoint redirects correctly when accessing the short URL"""
         shortener = self.setup_shortener()
         shortcode = shortener.shortcode
         redirect_url = reverse('redirect-short-url', kwargs={'shortcode': shortcode})

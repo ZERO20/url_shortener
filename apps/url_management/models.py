@@ -19,6 +19,7 @@ class Shortener(models.Model):
 
     @classmethod
     def create_shortened_url(cls):
+        """Generates a short code for the url and validate that it is unique"""
         code = get_random_string(int(settings.SHORTENER_BLOCK_SIZE))
         if cls.objects.filter(shortcode=code).exists():
             return cls.create_shortened_url()

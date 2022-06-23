@@ -10,7 +10,7 @@ from apps.url_management.serializers import UrlShortenerSerializer
 
 
 class GenerateShortUrlAPIView(APIView):
-
+    """Generates a shortcode for a valid URL"""
     def post(self, request):
         serializer = UrlShortenerSerializer(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
@@ -19,14 +19,14 @@ class GenerateShortUrlAPIView(APIView):
 
 
 class DecodeUrlShortApiView(APIView):
-
+    """Decodes a URL short into the original URL"""
     def get(self, request, shortcode):
         shortener = get_object_or_404(Shortener, shortcode=shortcode)
         return Response(dict(url=shortener.url), 200)
 
 
 class RedirectUrlShortApiView(APIView):
-
+    """Redirects to original URL when accessing URL short"""
     def get(self, request, shortcode):
         shortener = get_object_or_404(Shortener, shortcode=shortcode)
         return HttpResponseRedirect(shortener.url)
