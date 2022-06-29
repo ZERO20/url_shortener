@@ -46,7 +46,7 @@ make createsuperuser # Create a super user
     "url": "https://fondeadora.com/"
 }
 ```
-- ### Redirect short URL ###
+### Redirect short URL ###
 - **URL:** `/{shortcode}`
 - **Method:** `GET`
 - **Code:** `302`
@@ -55,7 +55,7 @@ make createsuperuser # Create a super user
 - **The endpoint must redirect to original URL**
 
 ## Test
-1. Use 'Make'
+1. Use `Make`
 ```
 make coverage-run # Run coverage test
 make coverage-report # Run coverage report
@@ -63,6 +63,8 @@ make coverage-report # Run coverage report
 
 ![img.png](docs/images/img.png)
 
-
+## Swagger##
+#### Swagger docs
+**url**: `docs/`
 ## Postman Collection
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/587528-1f868cf7-ec03-4c59-9857-deb0d129ca2e?action=collection%2Ffork&collection-url=entityId%3D587528-1f868cf7-ec03-4c59-9857-deb0d129ca2e%26entityType%3Dcollection%26workspaceId%3D87227067-2bba-4862-97e3-a425444e8ff4#?env%5BUrl%20Shortener%5D=W3sia2V5IjoiQkFTRV9VUkwiLCJ2YWx1ZSI6Imh0dHBzOi8vZDNiYS0xODktMTI5LTktOTUubmdyb2suaW8iLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCJ9XQ==)
