@@ -43,6 +43,7 @@ PROJECT_APPS = [
 THIRD_APPS = [
     'django_extensions',
     'rest_framework',
+    'drf_yasg',
 ]
 
 # Application definition
